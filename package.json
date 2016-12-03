@@ -1,0 +1,31 @@
+{
+  "name": "web-crawler",
+  "version": "1.0.0",
+  "description": "Crawls through website and indexes static assets",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "crawler": "node app/web-crawler.js crawl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4p00rv/web-crawler.git"
+  },
+  "keywords": [
+    "web-crawler"
+  ],
+  "author": "Apoorv Joshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4p00rv/web-crawler/issues"
+  },
+  "homepage": "https://github.com/4p00rv/web-crawler#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "gumbo-parser": "^0.3.0",
+    "make-runnable": "^1.0.7",
+    "mocha": "^3.2.0",
+    "request": "^2.79.0"
+  }
+}

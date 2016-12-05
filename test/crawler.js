@@ -13,12 +13,12 @@ describe("Test crawler", function(){
 		crawl(url + "/static.html", function(assets){
 			expect(assets).to.deep.equal([
 				{
-					url: "http://localhost:8080/static.html",
+					url: url + "/static.html",
 					assets: [
-						'http://localhost:8080/css/main.css',
+						url + '/css/main.css',
 						'http://google.com/some.css',
-						'http://localhost:8080/abcd.jpg',
-						'http://localhost:8080/static.html/abcd.svg',
+						url + '/abcd.jpg',
+						url + '/static.html/abcd.svg',
 						'https://yahoo.com/something.pdf'
 					]
 				}
@@ -31,16 +31,16 @@ describe("Test crawler", function(){
 		crawl(url + "/page1.html", function(assets){
 			expect(assets).to.deep.equal([
 				{
-					url: "http://localhost:8080/page1.html",
+					url: url + "/page1.html",
 					assets: [
-						'http://localhost:8080/css/main.css'
+						url + '/css/main.css'
 					]
 				},
 				{
-					url: "http://localhost:8080/page2.html",
+					url: url + "/page2.html",
 					assets: [
-						'http://localhost:8080/css/main.css',
-						'http://localhost:8080/page2.html/efgh.jpg'
+						url + '/css/main.css',
+						url + '/page2.html/efgh.jpg'
 					]	
 				}
 			]);
@@ -52,17 +52,32 @@ describe("Test crawler", function(){
 		crawl(url + "/page3.html", function(assets){
 			expect(assets).to.deep.equal([
 				{
-					url: "http://localhost:8080/page3.html",
+					url: url + "/page3.html",
 					assets: [
-						'http://localhost:8080/css/main.css'
+						url + '/css/main.css'
 					]
 				},
 				{
-					url: "http://localhost:8080/page4.html",
+					url: url + "/page4.html",
 					assets: [
-						'http://localhost:8080/css/main.css',
-						'http://localhost:8080/page4.html/efgh.jpg'
+						url + '/css/main.css',
+						url + '/page4.html/efgh.jpg'
 					]	
+				}
+			]);
+			done();
+		});
+	});
+
+	it("Doesn't scrape the assets from 404 page", function(){
+		crawl(url + "/page5.html", function(assets){
+			expect(assets).to.deep.equal([
+				{
+					url: url + "/page5.html",
+					assets: [
+						url + "/some.mp3",
+						url + "/some.mov"
+					]
 				}
 			]);
 			done();
